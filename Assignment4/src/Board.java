@@ -8,14 +8,18 @@ public class Board {
         this.size = boardSize;
     }
 
-    public void addEntity(BoardEntity entity){}
+    public void addEntity(BoardEntity entity){
+        this.boardData.put(entity.getX() + ":" + entity.getY(), entity);
+    }
 
     public BoardEntity getEntity(EntityPosition position){
-        return null;
+        BoardEntity currEntity = boardData.get(position.x + ":" + position.y);
+
+        return currEntity;
     }
 
     public Direction getDirection(Insect insect){
-        return null;
+        return insect.getBestDirection(boardData, size);
     }
 
     public int getDirectionSum(Insect insect){
