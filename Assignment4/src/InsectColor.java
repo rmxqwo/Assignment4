@@ -14,11 +14,11 @@ public enum InsectColor {
         return name;
     }
 
-    public static InsectColor toColor(String s){
+    public static InsectColor toColor(String s) throws InvalidInsectColorException {
         try{
             return valueOf(s.trim().toUpperCase());
         } catch (IllegalArgumentException e){
-            throw new InvalidInsectColorExeption();
+            throw new InvalidInsectColorException();
         }
         //return s.equals("RED") ? RED : s.equals("GREEN") ? GREEN :  s.equals("BLUE") ? BLUE :  YELLOW;
     }

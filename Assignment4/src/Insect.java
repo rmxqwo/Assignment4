@@ -9,7 +9,7 @@ abstract class Insect extends BoardEntity{
         this.color = color;
     }
 
-    public static Insect createInsect(String type, EntityPosition pos, InsectColor color) {
+    public static Insect createInsect(String type, EntityPosition pos, InsectColor color) throws InvalidInsectTypeException {
         return switch (type.toLowerCase()) {
             case "ant" -> new Ant(pos, color);
             case "butterfly" -> new Butterfly(pos, color);

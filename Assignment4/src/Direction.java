@@ -3,20 +3,25 @@ public enum Direction {
     E("East"),
     S("South"),
     W("West"),
-    NE("NorthEast"),
-    SE("SouthEast"),
-    SW("SouthWest"),
-    NW("NorthWest");
-    String textRepresentation;
+    NE("North-East"),
+    SE("South-East"),
+    SW("South-West"),
+    NW("North-West");
+    private final String textRepresentation;
 
-    Direction(String text){
-
+    Direction(String textRepresentation){
+        this.textRepresentation = textRepresentation;
     }
-    public boolean isOrthogonal(Direction dir){
+
+    public String getDisplayName() {
+        return textRepresentation;
+    }
+
+    public static boolean isOrthogonal(Direction dir){
         return dir == N || dir == E || dir == S || dir == W;
     }
 
-    public boolean isDiagonal(Direction dir){
+    public static boolean isDiagonal(Direction dir){
         return dir == NE || dir == SE || dir == SW || dir == NW;
     }
 

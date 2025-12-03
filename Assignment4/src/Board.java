@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Board {
-    HashMap<String, BoardEntity> boardData = new HashMap<>();
+    public static HashMap<String, BoardEntity> boardData = new HashMap<>();
     int size;
 
     Board(int boardSize){
@@ -9,7 +9,13 @@ public class Board {
     }
 
     public void addEntity(BoardEntity entity){
-        this.boardData.put(entity.getX() + ":" + entity.getY(), entity);
+        try {
+            if (this.boardData.get(entity.getX() + ":" + entity.getY()) != null)
+                throw new TwoEntitiesOnSamePositionException();
+            this.boardData.put(entity.getX() + ":" + entity.getY(), entity);
+        } catch(TwoEntitiesOnSamePositionException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public BoardEntity getEntity(EntityPosition position){
